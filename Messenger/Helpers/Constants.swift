@@ -13,4 +13,5 @@ public let kCURRENTUSER = "currentUser"
 public let kSTATUS = "status"
 public let kFIRSTRUN = "firstRun"
 public let kCHATROOMID = "chatRoomId"
+public let kSENDERID = "senderId"
 

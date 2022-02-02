@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 func StartChat(user1: User, user2: User) -> String {
     let chatRoomId = chatRoomIdFrom(user1Id: user1.id, user2Id: user2.id)
@@ -18,10 +20,39 @@ func StartChat(user1: User, user2: User) -> String {
 }
 
 func createRecentItems(chatRoomId: String, users: [User]){
-    //check if the user already have recent object
+    
+    //At first we assume that we need to create recent for both users in the users array
+    var memberIdsToCreateRecent = [users.first!.id, users.last!.id]
+    
+    //Now check if the user already have recent object, if he have we remove it from memberIdsToCreateRecent array
     FirebaseReference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, Error) in
-        <#code#>
+        guard let snapshot = snapshot else { return }
+        
+        if !snapshot.isEmpty {
+            memberIdsToCreateRecent = removeMemberWhoHasRecent(snapshot: snapshot, memberIds: memberIdsToCreateRecent)
+        }
+        
+        for userId in memberIdsToCreateRecent {
+            let senderUser = userId == User.currentId ? User.currentUser! : getReceiverFrom(users: users)
+            let receiverUser = userId == User.currentId ? getReceiverFrom(users: users) : User.currentUser!
+            
+            let recentObject = RecentChat(id: UUID().uuidString, chatRoomId: chatRoomId, senderId: senderUser.id, senderName: senderUser.username, receiverId: receiverUser.id, receiverName: receiverUser.username, date: Date(), memberIds: [senderUser.id, receiverUser.id], lastMessage: "", unreadCounter: 0, avatarLink: receiverUser.avatarLink)
+        }
     }
+}
+
+
+func removeMemberWhoHasRecent(snapshot: QuerySnapshot, memberIds: [String]) -> [String]{
+    var memberIdsToCreateRecent = memberIds
+    for recentDate in snapshot.documents {
+        let currentRecent = recentDate.data() as Dictionary
+        if let currentUserId = currentRecent[kSENDERID] {
+            if memberIdsToCreateRecent.contains(currentUserId as! String) {
+                memberIdsToCreateRecent.remove(at: memberIdsToCreateRecent.firstIndex(of: currentUserId as! String)!)
+            }
+        }
+    }
+    return memberIdsToCreateRecent
 }
 
 
@@ -30,4 +61,11 @@ func chatRoomIdFrom(user1Id: String, user2Id: String) -> String {
     let value = user1Id.compare(user2Id).rawValue
     chatRoomId = value < 0 ? (user1Id + user2Id) : (user2Id + user1Id)
     return chatRoomId
+}
+
+
+func getReceiverFrom(users: [User]) -> User {
+    var allUsers = users
+    allUsers.remove(at: allUsers.firstIndex(of: User.currentUser!)!)
+    return allUsers.first!
 }
