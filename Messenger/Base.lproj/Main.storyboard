@@ -322,7 +322,7 @@
         <!--Users-->
         <scene sceneID="laH-pZ-pM1">
             <objects>
-                <tableViewController id="UBw-yB-8Ku" customClass="UsersTableViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="usersView" id="UBw-yB-8Ku" customClass="UsersTableViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="4Ze-A3-n2C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -766,13 +766,13 @@
         <!--Chats-->
         <scene sceneID="AQS-R6-x6b">
             <objects>
-                <tableViewController id="m14-Oy-hBj" sceneMemberID="viewController">
+                <tableViewController id="m14-Oy-hBj" customClass="ChatsTableViewController" customModule="Messenger" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="NQI-qT-db9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="tableViewBackgroungColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="qEz-uf-oSu" customClass="RecentTableViewCell" customModule="Messenger" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="qEz-uf-oSu" customClass="RecentTableViewCell" customModule="Messenger" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qEz-uf-oSu" id="BSV-Ed-WA3">
@@ -800,23 +800,22 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Today 22:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQp-Li-5gT">
-                                            <rect key="frame" x="310" y="11" width="66" height="16.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16.5" id="7ht-gC-tz6"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today 22:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQp-Li-5gT">
+                                            <rect key="frame" x="314" y="11" width="66" height="16.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hta-Pk-hrm">
-                                            <rect key="frame" x="334" y="44" width="30" height="30"/>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hta-Pk-hrm">
+                                            <rect key="frame" x="339" y="42" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rp-Vc-gUT">
-                                                    <rect key="frame" x="4" y="6" width="21" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rp-Vc-gUT">
+                                                    <rect key="frame" x="5" y="6" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" systemColor="tintColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -826,12 +825,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="poA-Jk-2qy" firstAttribute="centerY" secondItem="BSV-Ed-WA3" secondAttribute="centerY" id="0A0-eu-eGs"/>
-                                        <constraint firstAttribute="trailing" secondItem="nQp-Li-5gT" secondAttribute="trailing" constant="2" id="W6A-sm-vdS"/>
                                         <constraint firstItem="poA-Jk-2qy" firstAttribute="leading" secondItem="BSV-Ed-WA3" secondAttribute="leadingMargin" id="fn8-z8-lfL"/>
-                                        <constraint firstItem="nQp-Li-5gT" firstAttribute="top" secondItem="BSV-Ed-WA3" secondAttribute="top" id="gTb-f8-h7x"/>
-                                        <constraint firstItem="nQp-Li-5gT" firstAttribute="top" secondItem="BSV-Ed-WA3" secondAttribute="top" id="jQC-Fq-oHX"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="hta-Pk-hrm" secondAttribute="trailing" constant="2" id="m0z-Xk-TzZ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="hta-Pk-hrm" secondAttribute="bottom" id="q1V-Gr-RaN"/>
                                         <constraint firstItem="poA-Jk-2qy" firstAttribute="leading" secondItem="BSV-Ed-WA3" secondAttribute="leadingMargin" id="wFK-Av-Jaa"/>
                                         <constraint firstItem="poA-Jk-2qy" firstAttribute="centerY" secondItem="BSV-Ed-WA3" secondAttribute="centerY" id="wLq-59-GVA"/>
                                     </constraints>
@@ -851,7 +845,13 @@
                             <outlet property="delegate" destination="m14-Oy-hBj" id="YLz-xR-PYq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Chats" id="9L1-wX-EqI"/>
+                    <navigationItem key="navigationItem" title="Chats" id="9L1-wX-EqI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="hHK-xO-L9Q">
+                            <connections>
+                                <action selector="composedButtonBarPressed:" destination="m14-Oy-hBj" id="HJg-Ni-0UN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldc-ES-3LA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -879,6 +879,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

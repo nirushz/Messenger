@@ -87,7 +87,7 @@ class UsersTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = true
         
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Bar"
+        searchController.searchBar.placeholder = "Search User"
         searchController.searchResultsUpdater = self
         definesPresentationContext = true
     }

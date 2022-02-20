@@ -15,8 +15,17 @@ func StartChat(user1: User, user2: User) -> String {
     
     createRecentItems(chatRoomId: chatRoomId, users: [user1, user2])
     
-    
     return chatRoomId
+}
+
+func RestartChat(chatRoomId: String, memberIds: [String]) {
+    
+    FirebaseUserListener.shared.downloadUsersFromFirebase(withIds: memberIds) { (users) in
+        
+        if users.count > 0 {
+            createRecentItems(chatRoomId: chatRoomId, users: users)
+        }
+    }
 }
 
 func createRecentItems(chatRoomId: String, users: [User]){
@@ -24,7 +33,7 @@ func createRecentItems(chatRoomId: String, users: [User]){
     //At first we assume that we need to create recent for both users in the users array
     var memberIdsToCreateRecent = [users.first!.id, users.last!.id]
     
-    //Now check if the user already have recent object, if he have we remove it from memberIdsToCreateRecent array
+    //Now check if the user already has recent object, if he has - we remove it from memberIdsToCreateRecent array
     FirebaseReference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, Error) in
         guard let snapshot = snapshot else { return }
         
@@ -37,6 +46,8 @@ func createRecentItems(chatRoomId: String, users: [User]){
             let receiverUser = userId == User.currentId ? getReceiverFrom(users: users) : User.currentUser!
             
             let recentObject = RecentChat(id: UUID().uuidString, chatRoomId: chatRoomId, senderId: senderUser.id, senderName: senderUser.username, receiverId: receiverUser.id, receiverName: receiverUser.username, date: Date(), memberIds: [senderUser.id, receiverUser.id], lastMessage: "", unreadCounter: 0, avatarLink: receiverUser.avatarLink)
+            
+            FirebaseRecentListener.shared.saveRecent(recentObject)
         }
     }
 }

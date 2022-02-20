@@ -24,7 +24,6 @@ class ProfileTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         setupUI()
-        
     }
     
     //MARK: - TableView Delegates
@@ -46,8 +45,15 @@ class ProfileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
-            print("Chatting...")
-            //Start Chatting
+            print("Start Chatting...")
+            
+            //Create recent objects
+            let chatId = StartChat(user1: User.currentUser!, user2: user!)
+            
+            //Create Chat view and enter it
+            let privateChatView = ChatViewController(chatId: chatId, recipientId: user!.id, recipientName: user!.username)
+            privateChatView.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(privateChatView, animated: true)
         }
     }
     
