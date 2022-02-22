@@ -29,6 +29,7 @@
 		C9BB33A3278DB3A400FC2179 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BB33A2278DB3A400FC2179 /* Status.swift */; };
 		C9BB33A5278DC8E600FC2179 /* StatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BB33A4278DC8E600FC2179 /* StatusTableViewController.swift */; };
 		C9CB4E7C27C2372C00C6DD83 /* LocalMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CB4E7B27C2372C00C6DD83 /* LocalMessages.swift */; };
+		C9CB4E8A27C4C3FD00C6DD83 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CB4E8927C4C3FD00C6DD83 /* RealmManager.swift */; };
 		C9D7F76327A0A3BC00334718 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7F76227A0A3BC00334718 /* UserTableViewCell.swift */; };
 		C9D7F76527A0A3EB00334718 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7F76427A0A3EB00334718 /* UsersTableViewController.swift */; };
 		C9D7F76C27A6EFA900334718 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7F76B27A6EFA900334718 /* ProfileTableViewController.swift */; };
@@ -72,6 +73,7 @@
 		C9BB33A2278DB3A400FC2179 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		C9BB33A4278DC8E600FC2179 /* StatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewController.swift; sourceTree = "<group>"; };
 		C9CB4E7B27C2372C00C6DD83 /* LocalMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessages.swift; sourceTree = "<group>"; };
+		C9CB4E8927C4C3FD00C6DD83 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		C9D7F76227A0A3BC00334718 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		C9D7F76427A0A3EB00334718 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		C9D7F76B27A6EFA900334718 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				C9CB4E7B27C2372C00C6DD83 /* LocalMessages.swift */,
+				C9CB4E8927C4C3FD00C6DD83 /* RealmManager.swift */,
 			);
 			path = RealmMessages;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				C9FAA04927BEA30D00371019 /* MessageDisplayDelegate.swift in Sources */,
 				C9FAA04427BEA2AC00371019 /* MessageDataSource.swift in Sources */,
 				C9CB4E7C27C2372C00C6DD83 /* LocalMessages.swift in Sources */,
+				C9CB4E8A27C4C3FD00C6DD83 /* RealmManager.swift in Sources */,
 				C9FAA04027BBC6FA00371019 /* ChatsTableViewController.swift in Sources */,
 				C990E4A727A97A0D00A94C8C /* StartChat.swift in Sources */,
 				C987579D2784C5E400E233B4 /* Constants.swift in Sources */,
